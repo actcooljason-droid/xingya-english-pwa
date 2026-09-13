@@ -1,4 +1,4 @@
-const KNOWN_TYPES = ["letter", "listen", "word", "sentence"];
+const KNOWN_TYPES = ["letter", "listen", "word", "sentence", "phonics", "listening", "vocabulary", "speaking", "reading"];
 
 export function emptyProgress() {
   return {
@@ -10,6 +10,9 @@ export function emptyProgress() {
     completedDates: [],
     byType: {},
     recentSessions: [],
+    completedLessonIds: [],
+    wrongActivityIds: [],
+    lastLessonId: null,
   };
 }
 
@@ -81,6 +84,7 @@ export function mergeProgress(progress, summary, completedAt = new Date().toISOS
   };
 
   return {
+    ...current,
     sessions: (current.sessions ?? 0) + 1,
     learningDays: completedDates.length,
     totalAttempts: (current.totalAttempts ?? 0) + summary.attempts,

@@ -84,7 +84,18 @@ test("mergeProgress accumulates totals and counts each calendar date once", () =
   assert.deepEqual(second.byType.letter, { attempts: 3, correct: 2 });
 });
 
-test("the real curriculum supports a valid five-activity daily session", () => {
+test("mergeProgress preserves course and review state while adding a session", () => {
+  const next = mergeProgress(
+    { ...emptyProgress(), completedLessonIds: ["u1-l1"], wrongActivityIds: ["u1-l1-listen"] },
+    { attempts: 1, correct: 1, stars: 2, byType: { listening: { attempts: 1, correct: 1 } } },
+    "2026-09-13T20:00:00+08:00",
+  );
+
+  assert.deepEqual(next.completedLessonIds, ["u1-l1"]);
+  assert.deepEqual(next.wrongActivityIds, ["u1-l1-listen"]);
+});
+
+test("the starter activity pool supports a valid five-activity session", () => {
   const session = createSession(rainbowPicnicActivities, 5, () => 0.3);
 
   assert.equal(session.length, 5);

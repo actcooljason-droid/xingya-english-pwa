@@ -1,21 +1,16 @@
-export function createDemoSubscription() {
+export function createSubscriptionOffer() {
   return {
-    status: "inactive",
+    planName: "星芽成长计划",
     price: 19.9,
     currency: "CNY",
     interval: "month",
-    simulation: true,
-    activatedAt: null,
+    benefits: ["24 节主题课程", "智能错题复习", "完整成长报告"],
   };
 }
 
-export function activateDemoSubscription(subscription, activatedAt = new Date().toISOString()) {
+export function requestWechatCheckout() {
   return {
-    status: "active",
-    price: subscription.price,
-    currency: subscription.currency,
-    interval: subscription.interval,
-    simulation: true,
-    activatedAt,
+    status: "unavailable",
+    message: "订阅功能正在开发中，敬请期待。",
   };
 }

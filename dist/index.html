@@ -4,11 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#17366f" />
-    <meta
-      name="description"
-      content="星芽英语：为幼儿园大班孩子设计的每日十分钟英语启蒙练习。"
-    />
-    <title>星芽英语</title>
+    <meta name="description" content="星芽英语：为幼儿园大班孩子设计的 6 单元、24 课系统幼小衔接英语课程。" />
+    <title>星芽英语 · 幼小衔接英语课程</title>
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./css/styles.css" />
@@ -16,179 +13,73 @@
   <body>
     <div class="app-shell">
       <header class="topbar">
-        <button class="brand" id="brand-home" type="button" aria-label="返回星芽英语首页">
-          <span class="brand-mark" aria-hidden="true">✦</span>
-          <span>星芽英语</span>
-        </button>
-        <button class="parent-hold" id="parent-hold" type="button" aria-label="长按三秒进入家长中心">
-          <span aria-hidden="true">◷</span>
-          <span class="parent-hold__text">家长长按</span>
-        </button>
+        <button class="brand" id="brand-home" type="button" aria-label="返回星芽英语首页"><span class="brand-mark" aria-hidden="true">✦</span><span>星芽英语</span></button>
+        <nav class="main-nav" aria-label="主要导航"><button class="nav-button is-active" data-screen="home-screen" type="button">今日</button><button class="nav-button" data-screen="course-screen" type="button">课程</button><button class="nav-button" data-screen="review-screen" type="button">复习</button></nav>
+        <button class="parent-hold" id="parent-hold" type="button" aria-label="长按三秒进入家长中心"><span aria-hidden="true">◷</span><span class="parent-hold__text">家长长按</span></button>
       </header>
 
       <main>
         <section class="screen home-screen is-active" id="home-screen" aria-labelledby="home-title">
           <div class="home-hero">
             <div class="hero-copy">
-              <div class="eyebrow"><span aria-hidden="true">☀</span> 今日冒险 · 彩虹野餐</div>
-              <h1 id="home-title">和小星一起，<br /><span>听见英语的快乐</span></h1>
-              <p class="hero-note">5 个小游戏 · 大约 10 分钟</p>
-              <button class="primary-button" id="start-button" type="button">
-                <span>开始今天的冒险</span><span aria-hidden="true">→</span>
-              </button>
+              <p class="eyebrow" id="home-unit"><span aria-hidden="true">☀</span> Unit 1 · Lesson 1</p>
+              <h1 id="home-title">Hello!<br /><span>今天勇敢开口</span></h1>
+              <p class="hero-goal" id="home-goal">会问好，也会介绍自己。</p>
+              <p class="hero-note"><span>7 个互动</span><span>约 9 分钟</span><span>完成得 1 枚贴纸</span></p>
+              <button class="primary-button" id="start-button" type="button"><span>开始这一课</span><span aria-hidden="true">→</span></button>
             </div>
-            <div class="mascot-stage" aria-hidden="true">
-              <span class="spark spark--one">✦</span>
-              <span class="spark spark--two">✦</span>
-              <img src="./assets/owl-guide.png" alt="" width="520" height="520" />
-              <div class="speech-bubble">Hello！准备好了吗？</div>
-            </div>
+            <div class="mascot-stage" aria-hidden="true"><span class="spark spark--one">✦</span><span class="spark spark--two">✦</span><img src="./assets/owl-guide.png" alt="" width="520" height="520" /><div class="speech-bubble" id="mascot-speech">Hello！准备好了吗？</div></div>
           </div>
 
-          <div class="home-grid">
-            <section class="journey-card" aria-labelledby="journey-title">
-              <div class="section-heading">
-                <div>
-                  <p class="section-kicker">TODAY'S JOURNEY</p>
-                  <h2 id="journey-title">今天会遇见什么？</h2>
-                </div>
-                <span class="duration-chip">约 10 分钟</span>
-              </div>
-              <ol class="journey-steps">
-                <li><span class="step-icon step-icon--yellow">A</span><span><strong>字母朋友</strong><small>听声音，找字母</small></span></li>
-                <li><span class="step-icon step-icon--blue">♫</span><span><strong>听音寻宝</strong><small>听单词，选图片</small></span></li>
-                <li><span class="step-icon step-icon--green">●</span><span><strong>彩虹单词</strong><small>颜色与生活小词</small></span></li>
-                <li><span class="step-icon step-icon--orange">☺</span><span><strong>开口问好</strong><small>Hello，自信说</small></span></li>
-              </ol>
+          <div class="dashboard-grid">
+            <section class="today-card" aria-labelledby="today-title">
+              <div class="section-heading"><div><p class="section-kicker">TODAY'S PATH</p><h2 id="today-title">今天这样学</h2></div><button class="text-link" data-screen="course-screen" type="button">查看全部 24 课</button></div>
+              <ol class="journey-steps"><li><span class="step-icon step-icon--yellow">♫</span><span><strong>听一听</strong><small>先让英语耳朵醒来</small></span></li><li><span class="step-icon step-icon--blue">Aa</span><span><strong>认字母</strong><small>建立字母与声音联系</small></span></li><li><span class="step-icon step-icon--green">●</span><span><strong>看图说</strong><small>在情境中理解词句</small></span></li><li><span class="step-icon step-icon--orange">★</span><span><strong>小挑战</strong><small>复习并收下星星</small></span></li></ol>
             </section>
-
-            <section class="growth-card" aria-labelledby="growth-title">
-              <div class="section-heading">
-                <div>
-                  <p class="section-kicker">MY LITTLE GARDEN</p>
-                  <h2 id="growth-title">我的成长花园</h2>
-                </div>
-              </div>
-              <div class="growth-stats">
-                <div><span class="stat-icon">★</span><strong id="home-stars">0</strong><small>闪亮星星</small></div>
-                <div><span class="stat-icon">☀</span><strong id="home-days">0</strong><small>学习天数</small></div>
-              </div>
-              <p class="growth-message" id="growth-message">完成第一次冒险，小种子就会发芽！</p>
-            </section>
+            <aside class="growth-card" aria-labelledby="growth-title">
+              <p class="section-kicker">MY GROWTH</p><h2 id="growth-title">我的成长</h2>
+              <div class="growth-stats"><div><span class="stat-icon">★</span><strong id="home-stars">0</strong><small>闪亮星星</small></div><div><span class="stat-icon">✓</span><strong id="home-lessons">0</strong><small>完成课程</small></div></div>
+              <div class="course-progress" aria-label="总课程进度"><span id="home-progress-fill"></span></div><p class="growth-message" id="growth-message">从第一声 Hello 开始吧！</p>
+            </aside>
           </div>
+
+          <section class="sticker-section" aria-labelledby="sticker-title"><div class="section-heading"><div><p class="section-kicker">UNIT STICKERS</p><h2 id="sticker-title">主题贴纸册</h2></div><span class="duration-chip">完成一个单元点亮一枚</span></div><div class="sticker-grid" id="sticker-grid"></div></section>
+        </section>
+
+        <section class="screen course-screen" id="course-screen" aria-labelledby="course-title" hidden>
+          <div class="page-heading"><div><p class="section-kicker">6 UNITS · 24 LESSONS</p><h1 id="course-title">我的英语学习地图</h1><p>每天一课，从听懂、敢说，到认字母、看图读短句。</p></div><div class="map-summary"><strong id="map-completed">0 / 24</strong><span>课程已完成</span></div></div>
+          <div class="course-map" id="course-map"></div>
+        </section>
+
+        <section class="screen review-screen" id="review-screen" aria-labelledby="review-title" hidden>
+          <div class="review-hero"><div><p class="section-kicker">SMART REVIEW</p><h1 id="review-title">把不熟悉的，再玩一遍</h1><p id="review-copy">完成第一课后，小星会帮你收集需要再练习的内容。</p></div><div class="review-orbit" aria-hidden="true"><span>★</span><strong id="review-count">0</strong><small>待复习</small></div></div>
+          <div class="review-layout"><section class="review-action-card"><span class="review-icon" aria-hidden="true">↻</span><h2>7 题智能复习</h2><p>先练最近答错的内容，再混合已学过的听力、字母、词汇、表达和阅读。</p><button class="primary-button" id="start-review" type="button">开始复习</button></section><section class="review-skills" aria-labelledby="review-skill-title"><h2 id="review-skill-title">五项能力</h2><div id="review-skill-list"></div></section></div>
         </section>
 
         <section class="screen lesson-screen" id="lesson-screen" aria-labelledby="activity-prompt" hidden>
-          <div class="lesson-topline">
-            <button class="icon-button" id="exit-lesson" type="button" aria-label="退出本次练习">×</button>
-            <div class="lesson-progress-wrap">
-              <div class="lesson-count"><span id="question-number">1</span> / 5</div>
-              <div class="progress-track" role="progressbar" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1">
-                <span id="progress-fill"></span>
-              </div>
-            </div>
-            <div class="session-stars" aria-label="本次获得的星星"><span aria-hidden="true">★</span><strong id="session-stars">0</strong></div>
-          </div>
-
-          <div class="activity-card">
-            <p class="activity-label" id="activity-label">听音选图</p>
-            <h2 id="activity-prompt">听一听，选出正确的图片</h2>
-            <button class="listen-button" id="listen-button" type="button">
-              <span class="listen-icon" aria-hidden="true">♪</span>
-              <span>再听一次</span>
-            </button>
-            <div class="answer-grid" id="answer-grid" role="group" aria-label="答案选项"></div>
-            <div class="feedback" id="feedback" aria-live="polite" hidden>
-              <div><strong id="feedback-title"></strong><span id="feedback-copy"></span></div>
-              <button class="next-button" id="next-button" type="button">下一题 <span aria-hidden="true">→</span></button>
-            </div>
-          </div>
+          <div class="lesson-topline"><button class="icon-button" id="exit-lesson" type="button" aria-label="退出本次练习">×</button><div class="lesson-progress-wrap"><div class="lesson-meta"><span id="lesson-name">Lesson 1</span><strong><span id="question-number">1</span> / <span id="question-total">7</span></strong></div><div class="progress-track" role="progressbar" aria-valuemin="1" aria-valuemax="7" aria-valuenow="1"><span id="progress-fill"></span></div></div><div class="session-stars" aria-label="本次获得的星星"><span aria-hidden="true">★</span><strong id="session-stars">0</strong></div></div>
+          <div class="activity-card"><p class="activity-label" id="activity-label">听音选图</p><h2 id="activity-prompt">听一听，选出正确的图片</h2><button class="listen-button" id="listen-button" type="button"><span class="listen-icon" aria-hidden="true">♪</span><span>再听一次</span></button><div class="answer-grid" id="answer-grid" role="group" aria-label="答案选项"></div><div class="feedback" id="feedback" aria-live="polite" hidden><div><strong id="feedback-title"></strong><span id="feedback-copy"></span></div><button class="next-button" id="next-button" type="button">下一题 <span aria-hidden="true">→</span></button></div></div>
         </section>
 
         <section class="screen complete-screen" id="complete-screen" aria-labelledby="complete-title" hidden>
-          <div class="complete-card">
-            <img src="./assets/owl-guide.png" alt="小星猫头鹰向导开心地举着星星" width="240" height="240" />
-            <p class="section-kicker">ADVENTURE COMPLETE</p>
-            <h2 id="complete-title">今天的冒险完成啦！</h2>
-            <p id="complete-message">你认真听、勇敢选，真棒！</p>
-            <div class="reward-row">
-              <div><span aria-hidden="true">✓</span><strong id="complete-correct">0 / 5</strong><small>答对题目</small></div>
-              <div><span aria-hidden="true">★</span><strong id="complete-stars">0</strong><small>获得星星</small></div>
-            </div>
-            <button class="primary-button" id="complete-home" type="button">回到成长花园</button>
-            <button class="text-button" id="practice-again" type="button">我还想再玩一次</button>
-          </div>
+          <div class="complete-card"><img src="./assets/owl-guide.png" alt="小星猫头鹰向导开心地举着星星" width="240" height="240" /><p class="section-kicker" id="complete-kicker">LESSON COMPLETE</p><h2 id="complete-title">这一课完成啦！</h2><p id="complete-message">每一次勇敢开口，都在为小学生活做准备。</p><div class="reward-row"><div><span aria-hidden="true">✓</span><strong id="complete-correct">0 / 7</strong><small>答对题目</small></div><div><span aria-hidden="true">★</span><strong id="complete-stars">0</strong><small>获得星星</small></div><div><span aria-hidden="true">⌁</span><strong id="complete-course">0 / 24</strong><small>课程进度</small></div></div><button class="primary-button" id="continue-learning" type="button">继续下一课</button><button class="text-button" id="complete-home" type="button">回到今日首页</button></div>
         </section>
 
         <section class="screen parent-screen" id="parent-screen" aria-labelledby="parent-title" hidden>
-          <div class="parent-heading">
-            <div><p class="section-kicker">FOR GROWN-UPS</p><h1 id="parent-title">家长中心</h1></div>
-            <button class="secondary-button" id="parent-close" type="button">返回孩子首页</button>
-          </div>
-          <p class="parent-intro">数据只保存在这台设备上。这里不记录孩子的姓名、声音或联系方式。</p>
-          <div class="report-grid">
-            <article><span>累计学习</span><strong id="report-days">0 天</strong><small id="report-sessions">0 次练习</small></article>
-            <article><span>累计星星</span><strong id="report-stars">0 颗</strong><small>答对一题获得 2 颗</small></article>
-            <article><span>整体正确率</span><strong id="report-accuracy">—</strong><small id="report-attempts">还没有答题记录</small></article>
-          </div>
-          <section class="skill-report" aria-labelledby="skill-title">
-            <h2 id="skill-title">能力小地图</h2>
-            <div id="skill-list" class="skill-list"></div>
-          </section>
-          <section class="subscription-card" aria-labelledby="subscription-title">
-            <div class="subscription-copy">
-              <p class="subscription-badge">演示订阅</p>
-              <h2 id="subscription-title">星芽成长计划</h2>
-              <p>解锁更多主题课程与完整成长报告。当前为界面演示，不会产生真实扣款。</p>
-              <p class="subscription-state" id="subscription-status">尚未订阅</p>
-            </div>
-            <div class="subscription-action">
-              <p class="subscription-price"><strong>¥19.9</strong><span>/ 月</span></p>
-              <button class="wechat-button" id="open-subscription" type="button">微信扫码订阅</button>
-            </div>
-          </section>
+          <div class="parent-heading"><div><p class="section-kicker">FOR GROWN-UPS</p><h1 id="parent-title">家长中心</h1></div><button class="secondary-button" id="parent-close" type="button">返回孩子首页</button></div>
+          <p class="parent-intro">星芽英语帮助大班孩子建立英语兴趣和小学学习准备。学习数据只保存在这台设备上，不记录孩子姓名、声音或联系方式。</p>
+          <div class="report-grid"><article><span>累计学习</span><strong id="report-days">0 天</strong><small id="report-sessions">0 次练习</small></article><article><span>课程进度</span><strong id="report-lessons">0 / 24</strong><small>6 个生活化主题单元</small></article><article><span>整体正确率</span><strong id="report-accuracy">—</strong><small id="report-attempts">还没有答题记录</small></article></div>
+          <section class="parent-panel" aria-labelledby="requirements-title"><div class="panel-heading"><div><p class="section-kicker">LEARNING GOALS</p><h2 id="requirements-title">幼小衔接学习要求</h2></div><span>听说优先 · 游戏化学习</span></div><div id="requirement-list" class="requirement-list"></div></section>
+          <section class="parent-panel" aria-labelledby="unit-report-title"><div class="panel-heading"><div><p class="section-kicker">COURSE REPORT</p><h2 id="unit-report-title">六单元学习进度</h2></div><span id="report-stars">0 颗星星</span></div><div id="unit-report" class="unit-report"></div></section>
+          <section class="subscription-card" aria-labelledby="subscription-title"><div class="subscription-copy"><p class="subscription-badge">会员订阅</p><h2 id="subscription-title">星芽成长计划</h2><p>完整主题课程、智能错题复习与成长报告，陪孩子稳稳走进小学英语课堂。</p><ul><li>24 节主题课程</li><li>智能错题复习</li><li>完整成长报告</li></ul></div><div class="subscription-action"><p class="subscription-price"><strong>¥19.9</strong><span>/ 月</span></p><button class="wechat-button" id="open-subscription" type="button">微信支付订阅</button></div></section>
           <button class="danger-link" id="reset-progress" type="button">清除本机学习记录</button>
         </section>
       </main>
     </div>
 
-    <dialog id="reset-dialog">
-      <form method="dialog">
-        <h2>要清除学习记录吗？</h2>
-        <p>星星、学习天数和答题记录都会回到零，此操作无法撤销。</p>
-        <div class="dialog-actions">
-          <button class="secondary-button" value="cancel">先保留</button>
-          <button class="danger-button" id="confirm-reset" value="confirm">确认清除</button>
-        </div>
-      </form>
-    </dialog>
-    <dialog id="subscription-dialog" class="subscription-dialog" aria-labelledby="subscription-dialog-title">
-      <form method="dialog">
-        <button class="dialog-close" value="cancel" aria-label="关闭订阅演示">×</button>
-        <div id="subscription-checkout">
-          <p class="subscription-badge">微信支付 · 演示</p>
-          <h2 id="subscription-dialog-title">星芽成长计划</h2>
-          <p class="checkout-price"><strong>¥19.9</strong><span> / 月</span></p>
-          <div class="demo-qr" role="img" aria-label="演示二维码，不可用于真实支付">
-            <span class="demo-qr__finder demo-qr__finder--one"></span>
-            <span class="demo-qr__finder demo-qr__finder--two"></span>
-            <span class="demo-qr__finder demo-qr__finder--three"></span>
-            <strong>DEMO</strong>
-          </div>
-          <p class="scan-copy">请使用微信扫一扫（界面模拟）</p>
-          <p class="demo-alert">仅用于界面演示，不会跳转微信，也不会产生扣款。</p>
-          <button class="wechat-button checkout-button" id="complete-demo-payment" type="button">我已完成支付（模拟）</button>
-        </div>
-        <div class="subscription-success" id="subscription-success" hidden>
-          <span aria-hidden="true">✓</span>
-          <h2>模拟订阅已开启</h2>
-          <p>本机已记录演示状态，没有创建订单，也没有发生任何扣款。</p>
-          <button class="secondary-button" value="cancel">完成</button>
-        </div>
-      </form>
-    </dialog>
+    <dialog id="reset-dialog"><form method="dialog"><h2>要清除学习记录吗？</h2><p>星星、课程进度和答题记录都会回到零，此操作无法撤销。</p><div class="dialog-actions"><button class="secondary-button" value="cancel">先保留</button><button class="danger-button" id="confirm-reset" value="confirm">确认清除</button></div></form></dialog>
+    <dialog id="subscription-dialog" class="subscription-dialog" aria-labelledby="subscription-dialog-title"><form method="dialog"><button class="dialog-close" value="cancel" aria-label="关闭订阅窗口">×</button><div id="subscription-checkout"><p class="subscription-badge">微信支付</p><h2 id="subscription-dialog-title">星芽成长计划</h2><p class="checkout-price"><strong>¥19.9</strong><span> / 月</span></p><div class="checkout-plan"><span>每月自动续费</span><strong>可随时取消</strong></div><div class="payment-qr" role="img" aria-label="微信支付订阅二维码"><span class="qr-finder qr-finder--one"></span><span class="qr-finder qr-finder--two"></span><span class="qr-finder qr-finder--three"></span><strong>微信支付</strong></div><p class="scan-copy">使用微信扫一扫完成订阅</p><p class="renew-note">确认后按月续费，每月 19.9 元。订阅管理功能将在家长中心提供。</p><button class="wechat-button checkout-button" id="confirm-wechat-payment" type="button">确认微信支付 ¥19.9</button></div><div class="development-state" id="subscription-development" hidden><span aria-hidden="true">⌁</span><h2>订阅功能正在开发中</h2><p>支付通道尚未开放，当前不会创建订单或产生扣款。敬请期待正式上线。</p><button class="secondary-button" value="cancel">知道了</button></div></form></dialog>
     <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
-
     <script type="module" src="./js/app.js"></script>
   </body>
 </html>

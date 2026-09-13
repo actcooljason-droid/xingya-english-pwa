@@ -1,12 +1,15 @@
 import { existsSync, readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { spawnSync } from "node:child_process";
+import { courseUnits } from "../dist/js/course-data.js";
 
 const root = resolve("dist");
 const required = [
   "index.html",
   "css/styles.css",
   "js/app.js",
+  "js/course-data.js",
+  "js/course-engine.js",
   "js/curriculum.js",
   "js/learning-engine.js",
   "js/subscription.js",
@@ -48,7 +51,7 @@ for (const url of precacheUrls) {
   if (!existsSync(target)) throw new Error(`Service worker precaches a missing file: ${url}`);
 }
 
-for (const relativePath of ["js/app.js", "js/curriculum.js", "js/learning-engine.js", "js/subscription.js", "sw.js"]) {
+for (const relativePath of ["js/app.js", "js/course-data.js", "js/course-engine.js", "js/curriculum.js", "js/learning-engine.js", "js/subscription.js", "sw.js"]) {
   const syntax = spawnSync(process.execPath, ["--check", join(root, relativePath)], { encoding: "utf8" });
   if (syntax.status !== 0) {
     throw new Error(`JavaScript syntax failed for ${relativePath}: ${syntax.stderr}`);
@@ -60,4 +63,15 @@ if (png.subarray(0, 8).toString("hex") !== "89504e470d0a1a0a") {
   throw new Error("Owl guide is not a valid PNG asset.");
 }
 
-console.log(`Static checks passed: ${required.length} required files, ${localReferences.length} page references, ${precacheUrls.length} cached URLs.`);
+const activities = courseUnits.flatMap((unit) => unit.lessons.flatMap((lesson) => lesson.activities));
+for (const activity of activities) {
+  const audioPath = join(root, "assets/audio", `${activity.id}.wav`);
+  if (!existsSync(audioPath)) throw new Error(`Missing mobile audio: ${activity.id}`);
+  const audio = readFileSync(audioPath);
+  if (audio.subarray(0, 4).toString("ascii") !== "RIFF" || audio.subarray(8, 12).toString("ascii") !== "WAVE") {
+    throw new Error(`Invalid WAV audio: ${activity.id}`);
+  }
+  if (audio.length <= 5000) throw new Error(`Empty or too-short WAV audio: ${activity.id}`);
+}
+
+console.log(`Static checks passed: ${required.length} required files, ${localReferences.length} page references, ${precacheUrls.length} cached URLs, ${activities.length} mobile audio files.`);
