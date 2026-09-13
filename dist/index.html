@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#17366f" />
+    <meta
+      name="description"
+      content="星芽英语：为幼儿园大班孩子设计的每日十分钟英语启蒙练习。"
+    />
+    <title>星芽英语</title>
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <button class="brand" id="brand-home" type="button" aria-label="返回星芽英语首页">
+          <span class="brand-mark" aria-hidden="true">✦</span>
+          <span>星芽英语</span>
+        </button>
+        <button class="parent-hold" id="parent-hold" type="button" aria-label="长按三秒进入家长中心">
+          <span aria-hidden="true">◷</span>
+          <span class="parent-hold__text">家长长按</span>
+        </button>
+      </header>
+
+      <main>
+        <section class="screen home-screen is-active" id="home-screen" aria-labelledby="home-title">
+          <div class="home-hero">
+            <div class="hero-copy">
+              <div class="eyebrow"><span aria-hidden="true">☀</span> 今日冒险 · 彩虹野餐</div>
+              <h1 id="home-title">和小星一起，<br /><span>听见英语的快乐</span></h1>
+              <p class="hero-note">5 个小游戏 · 大约 10 分钟</p>
+              <button class="primary-button" id="start-button" type="button">
+                <span>开始今天的冒险</span><span aria-hidden="true">→</span>
+              </button>
+            </div>
+            <div class="mascot-stage" aria-hidden="true">
+              <span class="spark spark--one">✦</span>
+              <span class="spark spark--two">✦</span>
+              <img src="./assets/owl-guide.png" alt="" width="520" height="520" />
+              <div class="speech-bubble">Hello！准备好了吗？</div>
+            </div>
+          </div>
+
+          <div class="home-grid">
+            <section class="journey-card" aria-labelledby="journey-title">
+              <div class="section-heading">
+                <div>
+                  <p class="section-kicker">TODAY'S JOURNEY</p>
+                  <h2 id="journey-title">今天会遇见什么？</h2>
+                </div>
+                <span class="duration-chip">约 10 分钟</span>
+              </div>
+              <ol class="journey-steps">
+                <li><span class="step-icon step-icon--yellow">A</span><span><strong>字母朋友</strong><small>听声音，找字母</small></span></li>
+                <li><span class="step-icon step-icon--blue">♫</span><span><strong>听音寻宝</strong><small>听单词，选图片</small></span></li>
+                <li><span class="step-icon step-icon--green">●</span><span><strong>彩虹单词</strong><small>颜色与生活小词</small></span></li>
+                <li><span class="step-icon step-icon--orange">☺</span><span><strong>开口问好</strong><small>Hello，自信说</small></span></li>
+              </ol>
+            </section>
+
+            <section class="growth-card" aria-labelledby="growth-title">
+              <div class="section-heading">
+                <div>
+                  <p class="section-kicker">MY LITTLE GARDEN</p>
+                  <h2 id="growth-title">我的成长花园</h2>
+                </div>
+              </div>
+              <div class="growth-stats">
+                <div><span class="stat-icon">★</span><strong id="home-stars">0</strong><small>闪亮星星</small></div>
+                <div><span class="stat-icon">☀</span><strong id="home-days">0</strong><small>学习天数</small></div>
+              </div>
+              <p class="growth-message" id="growth-message">完成第一次冒险，小种子就会发芽！</p>
+            </section>
+          </div>
+        </section>
+
+        <section class="screen lesson-screen" id="lesson-screen" aria-labelledby="activity-prompt" hidden>
+          <div class="lesson-topline">
+            <button class="icon-button" id="exit-lesson" type="button" aria-label="退出本次练习">×</button>
+            <div class="lesson-progress-wrap">
+              <div class="lesson-count"><span id="question-number">1</span> / 5</div>
+              <div class="progress-track" role="progressbar" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1">
+                <span id="progress-fill"></span>
+              </div>
+            </div>
+            <div class="session-stars" aria-label="本次获得的星星"><span aria-hidden="true">★</span><strong id="session-stars">0</strong></div>
+          </div>
+
+          <div class="activity-card">
+            <p class="activity-label" id="activity-label">听音选图</p>
+            <h2 id="activity-prompt">听一听，选出正确的图片</h2>
+            <button class="listen-button" id="listen-button" type="button">
+              <span class="listen-icon" aria-hidden="true">♪</span>
+              <span>再听一次</span>
+            </button>
+            <div class="answer-grid" id="answer-grid" role="group" aria-label="答案选项"></div>
+            <div class="feedback" id="feedback" aria-live="polite" hidden>
+              <div><strong id="feedback-title"></strong><span id="feedback-copy"></span></div>
+              <button class="next-button" id="next-button" type="button">下一题 <span aria-hidden="true">→</span></button>
+            </div>
+          </div>
+        </section>
+
+        <section class="screen complete-screen" id="complete-screen" aria-labelledby="complete-title" hidden>
+          <div class="complete-card">
+            <img src="./assets/owl-guide.png" alt="小星猫头鹰向导开心地举着星星" width="240" height="240" />
+            <p class="section-kicker">ADVENTURE COMPLETE</p>
+            <h2 id="complete-title">今天的冒险完成啦！</h2>
+            <p id="complete-message">你认真听、勇敢选，真棒！</p>
+            <div class="reward-row">
+              <div><span aria-hidden="true">✓</span><strong id="complete-correct">0 / 5</strong><small>答对题目</small></div>
+              <div><span aria-hidden="true">★</span><strong id="complete-stars">0</strong><small>获得星星</small></div>
+            </div>
+            <button class="primary-button" id="complete-home" type="button">回到成长花园</button>
+            <button class="text-button" id="practice-again" type="button">我还想再玩一次</button>
+          </div>
+        </section>
+
+        <section class="screen parent-screen" id="parent-screen" aria-labelledby="parent-title" hidden>
+          <div class="parent-heading">
+            <div><p class="section-kicker">FOR GROWN-UPS</p><h1 id="parent-title">家长中心</h1></div>
+            <button class="secondary-button" id="parent-close" type="button">返回孩子首页</button>
+          </div>
+          <p class="parent-intro">数据只保存在这台设备上。这里不记录孩子的姓名、声音或联系方式。</p>
+          <div class="report-grid">
+            <article><span>累计学习</span><strong id="report-days">0 天</strong><small id="report-sessions">0 次练习</small></article>
+            <article><span>累计星星</span><strong id="report-stars">0 颗</strong><small>答对一题获得 2 颗</small></article>
+            <article><span>整体正确率</span><strong id="report-accuracy">—</strong><small id="report-attempts">还没有答题记录</small></article>
+          </div>
+          <section class="skill-report" aria-labelledby="skill-title">
+            <h2 id="skill-title">能力小地图</h2>
+            <div id="skill-list" class="skill-list"></div>
+          </section>
+          <button class="danger-link" id="reset-progress" type="button">清除本机学习记录</button>
+        </section>
+      </main>
+    </div>
+
+    <dialog id="reset-dialog">
+      <form method="dialog">
+        <h2>要清除学习记录吗？</h2>
+        <p>星星、学习天数和答题记录都会回到零，此操作无法撤销。</p>
+        <div class="dialog-actions">
+          <button class="secondary-button" value="cancel">先保留</button>
+          <button class="danger-button" id="confirm-reset" value="confirm">确认清除</button>
+        </div>
+      </form>
+    </dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>
