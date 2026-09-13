@@ -56,7 +56,7 @@ button:focus-visible { outline: 4px solid rgba(83, 189, 240, 0.5); outline-offse
 .spark--two { right: 7%; bottom: 28%; animation-delay: -1.4s; }
 
 .home-grid { display: grid; grid-template-columns: 1.35fr .65fr; gap: 22px; margin-top: 22px; }
-.journey-card, .growth-card, .activity-card, .complete-card, .skill-report { background: var(--white); border: 1px solid #e5ecf8; box-shadow: var(--shadow); }
+.journey-card, .growth-card, .activity-card, .complete-card, .skill-report, .subscription-card { background: var(--white); border: 1px solid #e5ecf8; box-shadow: var(--shadow); }
 .journey-card, .growth-card { padding: 28px; border-radius: var(--radius-lg); }
 .section-heading { display: flex; justify-content: space-between; align-items: start; gap: 16px; }
 .section-kicker { margin: 0 0 8px; color: #6382b7; }
@@ -145,6 +145,18 @@ button:focus-visible { outline: 4px solid rgba(83, 189, 240, 0.5); outline-offse
 .skill-row > div:first-child { display: flex; justify-content: space-between; gap: 14px; margin-bottom: 8px; }
 .skill-row span { color: var(--muted); }
 .skill-track { height: 11px; }
+.subscription-card { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 28px; margin-top: 20px; padding: 28px; border-radius: 28px; background: linear-gradient(135deg, #f0fff6, #fff); }
+.subscription-copy h2 { margin: 6px 0 8px; color: var(--navy-dark); }
+.subscription-copy > p:not(.subscription-badge):not(.subscription-state) { max-width: 600px; margin: 0; color: var(--muted); line-height: 1.6; }
+.subscription-badge { display: inline-block; margin: 0; padding: 6px 10px; border-radius: 999px; color: #176b3b !important; background: #d8f7e4; font-size: .76rem; font-weight: 900; letter-spacing: .06em; }
+.subscription-state { margin: 12px 0 0; color: var(--muted); font-weight: 850; }
+.subscription-state.is-active { color: #14753f; }
+.subscription-action { min-width: 210px; text-align: right; }
+.subscription-price { margin: 0 0 12px; color: var(--navy-dark); }
+.subscription-price strong { font-size: 2.1rem; }
+.subscription-price span { color: var(--muted); font-weight: 800; }
+.wechat-button { min-height: 56px; padding: 0 22px; border: 0; border-radius: 17px; color: white; background: #07a953; font-weight: 900; cursor: pointer; box-shadow: 0 8px 20px rgba(7, 169, 83, .24); }
+.wechat-button:hover { background: #078f48; }
 .danger-link { min-height: 48px; margin-top: 24px; padding: 0; border: 0; color: var(--red); background: transparent; font-weight: 800; text-decoration: underline; cursor: pointer; }
 
 dialog { width: min(520px, calc(100% - 32px)); border: 0; border-radius: 28px; padding: 0; color: var(--ink); box-shadow: 0 30px 80px rgba(11, 29, 65, .3); }
@@ -153,6 +165,25 @@ dialog form { padding: 30px; }
 dialog h2 { margin-top: 0; }
 dialog p { color: var(--muted); line-height: 1.6; }
 .dialog-actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px; }
+.subscription-dialog { width: min(560px, calc(100% - 24px)); text-align: center; }
+.subscription-dialog form { position: relative; }
+.dialog-close { position: absolute; top: 12px; right: 12px; width: 46px; height: 46px; border: 0; border-radius: 50%; color: var(--navy); background: #eef3fa; font-size: 1.6rem; cursor: pointer; }
+.subscription-dialog h2 { margin: 14px 0 0; }
+.checkout-price { margin: 8px 0 16px; }
+.checkout-price strong { color: var(--navy-dark); font-size: 2.3rem; }
+.demo-qr { position: relative; width: 216px; height: 216px; margin: 0 auto; border: 12px solid white; outline: 2px solid #dce5ee; border-radius: 10px; overflow: hidden; background-color: white; background-image: repeating-linear-gradient(0deg, transparent 0 9px, rgba(12, 35, 28, .95) 9px 18px), repeating-linear-gradient(90deg, rgba(12, 35, 28, .95) 0 9px, transparent 9px 18px); background-blend-mode: difference; box-shadow: 0 10px 24px rgba(16, 38, 83, .12); }
+.demo-qr::after { content: ""; position: absolute; inset: 28% 18%; border: 7px solid white; border-radius: 10px; background: #07a953; }
+.demo-qr strong { position: absolute; z-index: 2; inset: 0; display: grid; place-items: center; color: white; font-size: 1rem; letter-spacing: .1em; }
+.demo-qr__finder { position: absolute; z-index: 3; width: 50px; height: 50px; border: 8px solid #0b251d; background: white; box-shadow: inset 0 0 0 8px white, inset 0 0 0 16px #0b251d; }
+.demo-qr__finder--one { top: 0; left: 0; }
+.demo-qr__finder--two { top: 0; right: 0; }
+.demo-qr__finder--three { bottom: 0; left: 0; }
+.scan-copy { margin: 15px 0 8px; color: var(--ink) !important; font-weight: 900; }
+.demo-alert { margin: 0 auto 16px; padding: 10px 12px; border-radius: 12px; color: #835600 !important; background: #fff3c6; font-size: .88rem; font-weight: 800; }
+.checkout-button { width: 100%; }
+.subscription-success { padding: 34px 8px 8px; }
+.subscription-success > span { display: grid; place-items: center; width: 74px; height: 74px; margin: 0 auto; border-radius: 50%; color: white; background: #07a953; font-size: 2.4rem; font-weight: 900; }
+.subscription-success .secondary-button { width: 100%; margin-top: 12px; }
 .toast { position: fixed; z-index: 20; left: 50%; bottom: 28px; width: min(480px, calc(100% - 32px)); transform: translateX(-50%); padding: 14px 18px; border-radius: 16px; color: white; background: var(--navy-dark); text-align: center; box-shadow: var(--shadow); font-weight: 800; }
 
 @keyframes float { 50% { transform: translateY(-10px) rotate(8deg); } }
@@ -187,6 +218,9 @@ dialog p { color: var(--muted); line-height: 1.6; }
   .complete-card { border-radius: 28px; }
   .parent-heading { align-items: flex-start; flex-direction: column; }
   .report-grid { grid-template-columns: 1fr; }
+  .subscription-card { grid-template-columns: 1fr; gap: 18px; }
+  .subscription-action { min-width: 0; text-align: left; }
+  .subscription-action .wechat-button { width: 100%; }
 }
 
 @media (max-width: 420px) {

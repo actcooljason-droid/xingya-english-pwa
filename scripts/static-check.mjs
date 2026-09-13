@@ -9,6 +9,7 @@ const required = [
   "js/app.js",
   "js/curriculum.js",
   "js/learning-engine.js",
+  "js/subscription.js",
   "assets/owl-guide.png",
   "assets/icon.svg",
   "manifest.webmanifest",
@@ -47,7 +48,7 @@ for (const url of precacheUrls) {
   if (!existsSync(target)) throw new Error(`Service worker precaches a missing file: ${url}`);
 }
 
-for (const relativePath of ["js/app.js", "js/curriculum.js", "js/learning-engine.js", "sw.js"]) {
+for (const relativePath of ["js/app.js", "js/curriculum.js", "js/learning-engine.js", "js/subscription.js", "sw.js"]) {
   const syntax = spawnSync(process.execPath, ["--check", join(root, relativePath)], { encoding: "utf8" });
   if (syntax.status !== 0) {
     throw new Error(`JavaScript syntax failed for ${relativePath}: ${syntax.stderr}`);

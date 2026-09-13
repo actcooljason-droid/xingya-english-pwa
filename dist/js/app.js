@@ -6,8 +6,13 @@ import {
   scoreSession,
 } from "./learning-engine.js";
 import { rainbowPicnicActivities } from "./curriculum.js";
+import {
+  activateDemoSubscription,
+  createDemoSubscription,
+} from "./subscription.js";
 
 const STORAGE_KEY = "xingya-english-progress-v1";
+const SUBSCRIPTION_STORAGE_KEY = "xingya-english-demo-subscription-v1";
 const TYPE_NAMES = {
   letter: "字母认知",
   listen: "听音选图",
@@ -23,6 +28,9 @@ const feedback = document.querySelector("#feedback");
 const listenButton = document.querySelector("#listen-button");
 const parentHold = document.querySelector("#parent-hold");
 const resetDialog = document.querySelector("#reset-dialog");
+const subscriptionDialog = document.querySelector("#subscription-dialog");
+const subscriptionCheckout = document.querySelector("#subscription-checkout");
+const subscriptionSuccess = document.querySelector("#subscription-success");
 const toast = document.querySelector("#toast");
 
 let session = [];
@@ -30,6 +38,7 @@ let questionIndex = 0;
 let results = [];
 let answered = false;
 let progress = loadProgress();
+let subscription = loadSubscription();
 let holdTimer = 0;
 let holdFrame = 0;
 let holdStartedAt = 0;
@@ -49,6 +58,26 @@ function saveProgress() {
     return true;
   } catch {
     showToast("本次成绩暂时无法保存，但可以继续学习。");
+    return false;
+  }
+}
+
+function loadSubscription() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(SUBSCRIPTION_STORAGE_KEY));
+    if (saved?.status !== "active" || saved?.simulation !== true) return createDemoSubscription();
+    return activateDemoSubscription(createDemoSubscription(), saved.activatedAt || null);
+  } catch {
+    return createDemoSubscription();
+  }
+}
+
+function saveSubscription() {
+  try {
+    localStorage.setItem(SUBSCRIPTION_STORAGE_KEY, JSON.stringify(subscription));
+    return true;
+  } catch {
+    showToast("模拟订阅状态暂时无法保存。");
     return false;
   }
 }
@@ -208,6 +237,32 @@ function renderParentReport() {
     row.innerHTML = `<div><strong>${name}</strong><span>${stats.attempts ? `${value}%` : "等待第一次练习"}</span></div><div class="skill-track"><span style="width:${value}%"></span></div>`;
     list.append(row);
   }
+  renderSubscription();
+}
+
+function renderSubscription() {
+  const active = subscription.status === "active";
+  const status = document.querySelector("#subscription-status");
+  const button = document.querySelector("#open-subscription");
+  status.textContent = active ? "已开启模拟订阅 · 本机演示" : "尚未订阅";
+  status.classList.toggle("is-active", active);
+  button.textContent = active ? "查看模拟订阅" : "微信扫码订阅";
+}
+
+function openSubscriptionDialog() {
+  const active = subscription.status === "active";
+  subscriptionCheckout.hidden = active;
+  subscriptionSuccess.hidden = !active;
+  subscriptionDialog.showModal();
+}
+
+function completeDemoSubscription() {
+  subscription = activateDemoSubscription(subscription);
+  saveSubscription();
+  renderSubscription();
+  subscriptionCheckout.hidden = true;
+  subscriptionSuccess.hidden = false;
+  showToast("模拟订阅已开启，不会产生真实扣款。");
 }
 
 function openParentReport() {
@@ -284,6 +339,8 @@ document.querySelector("#parent-close").addEventListener("click", () => {
   setScreen("home-screen");
 });
 document.querySelector("#reset-progress").addEventListener("click", () => resetDialog.showModal());
+document.querySelector("#open-subscription").addEventListener("click", openSubscriptionDialog);
+document.querySelector("#complete-demo-payment").addEventListener("click", completeDemoSubscription);
 document.querySelector("#confirm-reset").addEventListener("click", () => {
   progress = emptyProgress();
   saveProgress();

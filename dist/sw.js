@@ -1,4 +1,4 @@
-const CACHE_NAME = "xingya-english-v1";
+const CACHE_NAME = "xingya-english-v2";
 const PRECACHE_URLS = [
   "./",
   "./index.html",
@@ -6,6 +6,7 @@ const PRECACHE_URLS = [
   "./js/app.js",
   "./js/curriculum.js",
   "./js/learning-engine.js",
+  "./js/subscription.js",
   "./assets/owl-guide.png",
   "./assets/icon.svg",
   "./manifest.webmanifest"

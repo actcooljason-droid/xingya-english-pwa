@@ -135,6 +135,18 @@
             <h2 id="skill-title">能力小地图</h2>
             <div id="skill-list" class="skill-list"></div>
           </section>
+          <section class="subscription-card" aria-labelledby="subscription-title">
+            <div class="subscription-copy">
+              <p class="subscription-badge">演示订阅</p>
+              <h2 id="subscription-title">星芽成长计划</h2>
+              <p>解锁更多主题课程与完整成长报告。当前为界面演示，不会产生真实扣款。</p>
+              <p class="subscription-state" id="subscription-status">尚未订阅</p>
+            </div>
+            <div class="subscription-action">
+              <p class="subscription-price"><strong>¥19.9</strong><span>/ 月</span></p>
+              <button class="wechat-button" id="open-subscription" type="button">微信扫码订阅</button>
+            </div>
+          </section>
           <button class="danger-link" id="reset-progress" type="button">清除本机学习记录</button>
         </section>
       </main>
@@ -147,6 +159,31 @@
         <div class="dialog-actions">
           <button class="secondary-button" value="cancel">先保留</button>
           <button class="danger-button" id="confirm-reset" value="confirm">确认清除</button>
+        </div>
+      </form>
+    </dialog>
+    <dialog id="subscription-dialog" class="subscription-dialog" aria-labelledby="subscription-dialog-title">
+      <form method="dialog">
+        <button class="dialog-close" value="cancel" aria-label="关闭订阅演示">×</button>
+        <div id="subscription-checkout">
+          <p class="subscription-badge">微信支付 · 演示</p>
+          <h2 id="subscription-dialog-title">星芽成长计划</h2>
+          <p class="checkout-price"><strong>¥19.9</strong><span> / 月</span></p>
+          <div class="demo-qr" role="img" aria-label="演示二维码，不可用于真实支付">
+            <span class="demo-qr__finder demo-qr__finder--one"></span>
+            <span class="demo-qr__finder demo-qr__finder--two"></span>
+            <span class="demo-qr__finder demo-qr__finder--three"></span>
+            <strong>DEMO</strong>
+          </div>
+          <p class="scan-copy">请使用微信扫一扫（界面模拟）</p>
+          <p class="demo-alert">仅用于界面演示，不会跳转微信，也不会产生扣款。</p>
+          <button class="wechat-button checkout-button" id="complete-demo-payment" type="button">我已完成支付（模拟）</button>
+        </div>
+        <div class="subscription-success" id="subscription-success" hidden>
+          <span aria-hidden="true">✓</span>
+          <h2>模拟订阅已开启</h2>
+          <p>本机已记录演示状态，没有创建订单，也没有发生任何扣款。</p>
+          <button class="secondary-button" value="cancel">完成</button>
         </div>
       </form>
     </dialog>
